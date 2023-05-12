@@ -15,7 +15,12 @@ function App() {
             }, 1000);
         });
     };
-    return <div className="App">frontend {aaaa} </div>;
+    return (
+        <div className="App">
+            <h1>Finally Everything is Setup</h1>
+            <h1>frontend {aaaa} </h1>{' '}
+        </div>
+    );
 }
 
 export default App;
