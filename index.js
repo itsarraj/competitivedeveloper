@@ -1,10 +1,12 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 
+const app = express();
+const path = require('path');
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.get('/home', (req, res) => {
-    res.send('Start of great things');
+app.get('/names', (req, res) => {
+    res.send({ message: 'Start of  things' });
 });
 
 app.listen(8000, () => {
