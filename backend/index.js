@@ -14,9 +14,9 @@ app.get('/names', (req, res) => {
 });
 
 const options = {
-    key: fs.readFileSync(path.resolve(__dirname, 'ssl/private.key')),
-    cert: fs.readFileSync(path.resolve(__dirname, 'ssl/certificate.crt')),
-    ca: fs.readFileSync(path.resolve(__dirname, 'ssl/ca_bundle.crt')),
+    key: fs.readFileSync(path.join(__dirname, './ssl/private.key')),
+    cert: fs.readFileSync(path.join(__dirname, './ssl/certificate.crt')),
+    ca: fs.readFileSync(path.join(__dirname, './ssl/ca_bundle.crt')),
 };
 
 const PORT = 8000;
