@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.get('/home', (req, res) => {
     res.send('Start of great things');
