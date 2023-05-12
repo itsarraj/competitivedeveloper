@@ -23,7 +23,6 @@ jobs:
                   cache: 'npm'
             - run: |
                   npm ci
-                  npm start
             - run: |
                   cd frontend
                   npm ci
