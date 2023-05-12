@@ -9,7 +9,6 @@ app.use(express.static(path.join(__dirname, './frontend/build')));
 app.get('/names', (req, res) => {
     res.send({ message: 'Start of  things' });
 });
-
 app.listen(8000, () => {
     console.log('Running on port 8000');
 });
