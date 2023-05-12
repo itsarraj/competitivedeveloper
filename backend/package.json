@@ -21,7 +21,6 @@
     },
     "homepage": "https://github.com/itsarraj/competitivedeveloper#readme",
     "dependencies": {
-        "express": "^4.18.2",
-        "letsencrypt-express": "^2.0.7"
+        "express": "^4.18.2"
     }
 }
