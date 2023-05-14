@@ -4,7 +4,7 @@
     "description": "meme sharing & discussion social media for developers",
     "main": "index.js",
     "scripts": {
-        "devstart": "nodeman index.js",
+        "devstart": "nodemon index.js",
         "start": "node index.js"
     },
     "repository": {
@@ -21,6 +21,7 @@
     },
     "homepage": "https://github.com/itsarraj/competitivedeveloper#readme",
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.18.2"
     }
 }
