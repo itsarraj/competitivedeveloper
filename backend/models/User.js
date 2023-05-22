@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt');
 
 const defaultProfilePath = path.join(
     __dirname,
@@ -155,6 +156,40 @@ const userSchema = mongoose.Schema(
         timestamps: true,
     }
 );
+
+userSchema.methods.comparePassword = function (userPass, cb) {
+    try {
+        bcrypt.compare(userPass, this.password, function (err, result) {
+            if (err) {
+                return cb(err);
+            }
+            console.log('user compare pass', result);
+
+            return cb(null, result);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+userSchema.pre('save', function (next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) {
+            return next(err);
+        }
+        console.log('this.password ', this.password);
+        console.log('salt ', salt);
+        bcrypt.hash(this.password, salt, (err, result) => {
+            console.log('result ', result);
+            this.password = result;
+            console.log('This password ', this.password);
+            return next();
+        });
+    });
+});
 
 const User = mongoose.model('User', userSchema);
 
