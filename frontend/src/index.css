@@ -1,37 +1,69 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-}
-html {
-  overflow-y: scroll;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
 :root {
-  --bg-primary: #fff;
-  --bg-secondary: #f0f2f5;
-  --bg-third: #e4e6eb;
-  --bg-forth: #f0f2f5;
-  --color-primary: #050505;
-  --color-secondary: #65676b;
-  --divider: #ced0d4;
-  --dark-bg-primary: #18191a;
-  --dark-bg-secondary: #242526;
-  --dark-bg-third: #3a3b3c;
-  --dark-color-primary: #242526;
-  --dark-color-secondary: #b0b3b8;
-  --blue-color: #1876f2;
-  --green-color: #42b72a;
-  --light-blue-color: #e7f3ff;
-  --border-color: #ccced2;
-  --shadow-1: rgba(0, 0, 0, 0.2);
-  --shadow-2: rgba(0, 0, 0, 0.1);
-  --shadow-3: rgba(0, 0, 0, 0.3);
-  --shadow-inset: rgba(255, 255, 255, 0.5);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 }
