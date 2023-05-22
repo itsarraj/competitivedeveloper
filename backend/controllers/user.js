@@ -6,7 +6,7 @@ const {
 } = require('../helpers/validation.js');
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../helpers/tokens.js');
-
+const { sendVerificationEmail } = require('../helpers/mailer.js');
 exports.register = async (req, res) => {
     try {
         console.log('req.body', req.body);
@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
         if (!validateEmail(email)) {
             return res.status(400).send({ message: 'Invalid Email' });
         }
-        const check = await User.findOne({ email: email });
+        const check = await User.findOne({ email });
         console.log('check', check);
         if (check) {
             return res.status(400).send({ message: 'Email already exists' });
@@ -65,9 +65,20 @@ exports.register = async (req, res) => {
             { id: user._id.toString() },
             '30m'
         );
-        console.log('emailVerificationToken', emailVerificationToken);
-
-        res.json({ user });
+        const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+        await sendVerificationEmail(user.email, user.first_name, url);
+        // Login
+        const token = generateToken({ id: user._id.toString() }, '7d');
+        res.send({
+            id: user._id,
+            username: user.username,
+            picture: user.picture,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            token: token,
+            verified: user.verified,
+            message: 'Register Success | please activate your email to start',
+        });
     } catch (error) {
         console.log('error', error);
         res.status(500).send({ message: 'Internal Server Error' });

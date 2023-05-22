@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
-console.log('dotenv.parsed', dotenv.parsed);
+// console.log('dotenv.parsed', dotenv.parsed);
 
 const cors = require('cors');
 const db = require('./config/database.js');
