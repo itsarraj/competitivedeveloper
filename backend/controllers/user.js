@@ -1,4 +1,6 @@
 const User = require('../models/User.js');
+const jwt = require('jsonwebtoken');
+
 const {
     validateEmail,
     validateLength,
@@ -9,7 +11,6 @@ const { generateToken } = require('../helpers/tokens.js');
 const { sendVerificationEmail } = require('../helpers/mailer.js');
 exports.register = async (req, res) => {
     try {
-        console.log('req.body', req.body);
         const {
             first_name,
             last_name,
@@ -26,7 +27,6 @@ exports.register = async (req, res) => {
             return res.status(400).send({ message: 'Invalid Email' });
         }
         const check = await User.findOne({ email });
-        console.log('check', check);
         if (check) {
             return res.status(400).send({ message: 'Email already exists' });
         }
@@ -48,7 +48,6 @@ exports.register = async (req, res) => {
         // const cryptedPassword = await bcrypt.hash(password, 12);
         let tempUsername = first_name + last_name;
         let newUsername = await validateUsername(tempUsername);
-        console.log('newUsername', newUsername);
         const user = await User.create({
             first_name,
             last_name,
@@ -61,10 +60,7 @@ exports.register = async (req, res) => {
             gender,
         });
 
-        const emailVerificationToken = generateToken(
-            { id: user._id.toString() },
-            '30m'
-        );
+        const emailVerificationToken = generateToken({ id: user._id }, '30m');
         const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
         await sendVerificationEmail(user.email, user.first_name, url);
         // Login
@@ -82,5 +78,23 @@ exports.register = async (req, res) => {
     } catch (error) {
         console.log('error', error);
         res.status(500).send({ message: 'Internal Server Error' });
+    }
+};
+exports.activateAccount = async (req, res) => {
+    const { token } = req.body;
+    const user = jwt.verify(token, process.env.TOKEN_SECRET);
+    const check = await User.findById(user.id);
+
+    if (check?.verified == true) {
+        return res
+            .status(400)
+            .json({ message: 'This email is already activated ' });
+    } else {
+        const update = await User.findByIdAndUpdate(user.id, {
+            verified: true,
+        });
+        return res
+            .status(200)
+            .json({ message: 'Account has been activated successfully.' });
     }
 };
