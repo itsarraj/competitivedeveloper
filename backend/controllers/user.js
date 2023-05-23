@@ -80,21 +80,81 @@ exports.register = async (req, res) => {
         res.status(500).send({ message: 'Internal Server Error' });
     }
 };
+const { comparePassword } = require('../models/User.js');
 exports.activateAccount = async (req, res) => {
-    const { token } = req.body;
-    const user = jwt.verify(token, process.env.TOKEN_SECRET);
-    const check = await User.findById(user.id);
+    try {
+        const { token } = req.body;
+        const user = jwt.verify(token, process.env.TOKEN_SECRET);
+        const check = await User.findById(user.id);
 
-    if (check?.verified == true) {
-        return res
-            .status(400)
-            .json({ message: 'This email is already activated ' });
-    } else {
-        const update = await User.findByIdAndUpdate(user.id, {
-            verified: true,
-        });
-        return res
-            .status(200)
-            .json({ message: 'Account has been activated successfully.' });
+        if (check?.verified == true) {
+            return res
+                .status(400)
+                .json({ message: 'This email is already activated ' });
+        } else {
+            await User.findByIdAndUpdate(user.id, {
+                verified: true,
+            });
+            return res
+                .status(200)
+                .json({ message: 'Account has been activated successfully.' });
+        }
+    } catch (error) {
+        console.log();
     }
+};
+exports.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.json({
+                message:
+                    'The email address you entered is not associated with this organisation',
+            });
+        }
+
+        const check = await user.comparePassword(
+            password,
+            function (error, isMatch) {
+                if (error) {
+                    console.log(error);
+                }
+                if (isMatch) {
+                    const token = generateToken(
+                        { id: user._id.toString() },
+                        '7d'
+                    );
+                    if (user.verified) {
+                        res.send({
+                            id: user._id,
+                            username: user.username,
+                            picture: user.picture,
+                            first_name: user.first_name,
+                            last_name: user.last_name,
+                            token: token,
+                            verified: user.verified,
+                            message: 'Login Success | Account Activated',
+                        });
+                    } else {
+                        res.send({
+                            id: user._id,
+                            username: user.username,
+                            picture: user.picture,
+                            first_name: user.first_name,
+                            last_name: user.last_name,
+                            token: token,
+                            verified: user.verified,
+                            message:
+                                'Login Success | please activate your email to start',
+                        });
+                    }
+                } else {
+                    return res.status(400).json({
+                        message: 'Invalid credentials',
+                    });
+                }
+            }
+        );
+    } catch (error) {}
 };
