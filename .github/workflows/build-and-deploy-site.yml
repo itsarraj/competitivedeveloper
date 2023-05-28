@@ -2,9 +2,9 @@ name: build-and-deploy-site CI
 
 on:
     push:
-        branches: ['master']
+        branches: ['deployment']
     pull_request:
-        branches: ['master']
+        branches: ['deployment']
 
 jobs:
     build:
