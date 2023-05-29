@@ -163,12 +163,12 @@ userSchema.methods.comparePassword = function (userPass, cb) {
             if (err) {
                 return cb(err);
             }
-            console.log('user compare pass', result);
+            // console.log('user compare pass', result);
 
             return cb(null, result);
         });
-    } catch (e) {
-        console.log(e);
+    } catch (error) {
+        console.log(error);
     }
 };
 
@@ -180,12 +180,12 @@ userSchema.pre('save', function (next) {
         if (err) {
             return next(err);
         }
-        console.log('this.password ', this.password);
-        console.log('salt ', salt);
+        // console.log('this.password ', this.password);
+        // console.log('salt ', salt);
         bcrypt.hash(this.password, salt, (err, result) => {
-            console.log('result ', result);
+            // console.log('result ', result);
             this.password = result;
-            console.log('This password ', this.password);
+            // console.log('This password ', this.password);
             return next();
         });
     });

@@ -28,7 +28,10 @@ jobs:
                   cd frontend
                   npm ci
                   npm run build
-                  npm run preview
+                  pm2 stop 1
+                  pm2 start 1
+                  pm2 save
+                  sudo service nginx restart
             - run: |
                   npm install -g pm2
                   pm2 stop 0

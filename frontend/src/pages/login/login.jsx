@@ -18,7 +18,12 @@ function Login() {
 
     return (
         <div className={styles.container}>
-            <form id="form" className={styles.form}>
+            <form
+                method="POST"
+                id="form"
+                className={styles.form}
+                onSubmit={(e) => e.preventDefault()}
+            >
                 <h2>Log In</h2>
 
                 <div className={styles.formControl}>

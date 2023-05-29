@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import styles from './register.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import BeatLoader from 'react-spinners/BeatLoader';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 function Register() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const userInfos = {
         first_name: '',
         last_name: '',
@@ -43,6 +46,7 @@ function Register() {
 
     const registerSubmit = async () => {
         try {
+            console.log(user);
             const { data } = await axios.post(
                 `${import.meta.env.VITE_BACKEND_URL}/register`,
                 {
@@ -56,13 +60,13 @@ function Register() {
                     gender,
                 }
             );
+            console.log(data);
             const { message, ...rest } = data;
             setTimeout(() => {
                 dispatch({ type: 'LOGIN', payload: rest });
                 Cookies.set('user', JSON.stringify(rest));
                 navigate('/');
             }, 2000);
-            console.log(data);
         } catch (error) {
             setLoading(false);
         }
@@ -70,10 +74,12 @@ function Register() {
     return (
         <div className={styles.container}>
             <form
+                method="POST"
                 id="form"
                 className={styles.form}
-                onSubmit={() => {
+                onSubmit={(e) => {
                     setLoading(true);
+                    e.preventDefault();
                     registerSubmit();
                 }}
             >
