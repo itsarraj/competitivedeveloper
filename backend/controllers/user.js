@@ -59,10 +59,17 @@ exports.register = async (req, res) => {
             birthDay,
             gender,
         });
-
+        console.log('user', user);
+        console.log('done 1');
         const emailVerificationToken = generateToken({ id: user._id }, '30m');
+        console.log('done 1');
+
         const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+        console.log('done 1');
+
         await sendVerificationEmail(user.email, user.first_name, url);
+        console.log('done 1');
+
         // Login
         const token = generateToken({ id: user._id.toString() }, '7d');
         res.send({

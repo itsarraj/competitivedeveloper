@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styles from './register.module.css';
 import { Link } from 'react-router-dom';
+import BeatLoader from 'react-spinners/BeatLoader';
+import axios from 'axios';
 
 function Register() {
     const userInfos = {
@@ -14,7 +16,6 @@ function Register() {
         gender: '',
     };
     const [user, setUser] = useState(userInfos);
-    console.log(user);
     const {
         first_name,
         last_name,
@@ -37,9 +38,45 @@ function Register() {
     };
     const days = Array.from(new Array(getDays()), (v, i) => 1 + i);
 
+    // loading
+    let [loading, setLoading] = useState(false);
+
+    const registerSubmit = async () => {
+        try {
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/register`,
+                {
+                    first_name,
+                    last_name,
+                    email,
+                    password,
+                    birthYear,
+                    birthMonth,
+                    birthDay,
+                    gender,
+                }
+            );
+            const { message, ...rest } = data;
+            setTimeout(() => {
+                dispatch({ type: 'LOGIN', payload: rest });
+                Cookies.set('user', JSON.stringify(rest));
+                navigate('/');
+            }, 2000);
+            console.log(data);
+        } catch (error) {
+            setLoading(false);
+        }
+    };
     return (
         <div className={styles.container}>
-            <form id="form" className={styles.form}>
+            <form
+                id="form"
+                className={styles.form}
+                onSubmit={() => {
+                    setLoading(true);
+                    registerSubmit();
+                }}
+            >
                 <h2>Register</h2>
                 <div className={styles.formControl}>
                     <label htmlFor="first_name">First name</label>
@@ -151,6 +188,15 @@ function Register() {
                     </span>
                 </div>
                 <button>Register</button>
+                <div className={styles.loading}>
+                    <BeatLoader
+                        color="#3498db"
+                        loading={loading}
+                        size={10}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                </div>
             </form>
         </div>
     );

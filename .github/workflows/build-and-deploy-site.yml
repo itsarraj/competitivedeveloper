@@ -28,6 +28,7 @@ jobs:
                   cd frontend
                   npm ci
                   npm run build
+                  npm run preview
             - run: |
                   npm install -g pm2
                   pm2 stop 0
