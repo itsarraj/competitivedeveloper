@@ -62,8 +62,9 @@ exports.register = async (req, res) => {
         const emailVerificationToken = generateToken({ id: user._id }, '30m');
 
         const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+        console.log('url to send to email', url);
 
-        await sendVerificationEmail(user.email, user.first_name, url);
+        // await sendVerificationEmail(user.email, user.first_name, url);
 
         // Login
         const token = generateToken({ id: user._id.toString() }, '7d');

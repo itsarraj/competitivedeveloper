@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './register.module.css';
+import styles from './register.module.scss';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import BeatLoader from 'react-spinners/BeatLoader';
 import axios from 'axios';
@@ -208,6 +208,13 @@ function Register() {
                         />
                     </div>
                 </form>
+                <div className={styles.loginlink}>
+                    <Link to="/login">
+                        <span className={styles.txt}>
+                            Already have an account? Login
+                        </span>
+                    </Link>
+                </div>
             </div>
         </div>
     );

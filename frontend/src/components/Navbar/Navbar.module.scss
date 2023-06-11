@@ -5,8 +5,7 @@
 .body {
     height: fit-content;
     width: 100%;
-
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Manrope';
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,6 +13,8 @@
     margin: 0;
 }
 .header {
+    font-family: 'Manrope';
+
     position: fixed;
     top: 0;
     width: 100%;
@@ -33,21 +34,96 @@
         flex-flow: row wrap;
         align-items: center;
         span {
-            margin: 0 10px 0 0;
+            // margin: 0 10px 0 0;
+            padding: 2px 10px 2px 10px;
             font-size: 1.5rem;
             font-weight: 600;
             color: #ffffff;
             flex-flow: row wrap;
+            cursor: default;
+        }
+        &:hover {
+            .competitive {
+                color: #ff0099;
+                background-color: #25ed6e;
+                border-radius: 10px 0px 0px 10px;
+            }
+            .developer {
+                color: #25ed6e;
+                background-color: #ff0099;
+                border-radius: 0px 10px 10px 0px;
+            }
         }
         .competitive {
-            color: red;
+            color: #25ed6e;
+            background-color: #ff0099;
+            border-radius: 10px 0px 0px 10px;
         }
         .developer {
+            color: #ff0099;
+            background-color: #25ed6e;
+            border-radius: 0px 10px 10px 0px;
+        }
+    }
+    .headerCenter {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 12px;
+        border-radius: 8px;
+        flex-basis: 50%;
+        // background-color: red;
+        .navigation {
+            margin: 2px;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: baseline;
+            padding: auto;
+            color: #c7cdf1;
+
+            .links {
+                &:hover {
+                    background: #98ff74;
+                    border-radius: 5px 5px 0px 0px;
+                    background: linear-gradient(
+                        180deg,
+                        rgba(0, 0, 0, 0.24) -72.24%,
+                        rgba(0, 0, 0, 0.24) 100%
+                    );
+                    .insidelink {
+                        .txt {
+                            color: #fff;
+                        }
+                    }
+                }
+                padding: 5px 12px 5px 12px;
+                margin: 0px 12px 0px 12px;
+                .insidelink {
+                    display: flex;
+                    flex-flow: row wrap;
+                    align-items: center;
+                    gap: 5px;
+                    .img {
+                        width: 20px;
+                        height: 20px;
+                        margin: 0 5px 0 0;
+                    }
+                    .txt {
+                        font-family: 'Manrope';
+
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 150%;
+                        color: #c7cdf1;
+                    }
+                }
+            }
         }
     }
     .headerRight {
         margin: 0 10px 0 0;
-        gap: 12px;
+        gap: 2px;
         display: flex;
         flex-flow: row wrap;
         align-items: center;
@@ -69,6 +145,11 @@
             cursor: pointer;
             &:hover {
                 background-color: #3e3e42;
+            }
+            .txt {
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 700;
             }
         }
     }

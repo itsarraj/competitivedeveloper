@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './login.module.css';
+import styles from './login.module.scss';
 import { Link } from 'react-router-dom';
 
 const loginInfos = {
@@ -51,6 +51,13 @@ function Login() {
 
                     <button>Log In</button>
                 </form>
+                <div className={styles.registerlink}>
+                    <Link to="/register">
+                        <span className={styles.txt}>
+                            Don't have an account? Register
+                        </span>
+                    </Link>
+                </div>
             </div>
         </div>
     );
