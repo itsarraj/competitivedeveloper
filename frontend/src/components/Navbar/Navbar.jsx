@@ -7,7 +7,7 @@ export default function Navbar() {
                 <div className={styles.headerLeft}>
                     <Link to="/" className={styles.headerLogo}>
                         <div className={styles.logo}>
-                            <img src="./../public/favicon/favicon.ico" alt="" />
+                            <img src="/favicon/favicon.ico" alt="" />
                         </div>
                     </Link>
                     <span>
