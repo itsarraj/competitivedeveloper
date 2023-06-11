@@ -10,6 +10,10 @@ export default function Navbar() {
                             <img src="./../public/favicon/favicon.ico" alt="" />
                         </div>
                     </Link>
+                    <span>
+                        <span className={styles.competitive}>Competitive</span>
+                        <span className={styles.developer}>Developer</span>
+                    </span>
                 </div>
                 <div className={styles.headerRight}>
                     <button className={styles.SignIn}>
