@@ -19,15 +19,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* min-height: 100%; */
-    margin: 0;
-    padding: 0;
 }
 
 .container {
     background-color: #24e2ff;
-    /* height: 100vw; */
-    width: 100vw;
     height: fit-content;
     margin: 0;
     padding: 0;
@@ -38,24 +33,17 @@
 }
 .content {
     margin: 0;
+    margin-top: 10vh;
     padding: 0;
     width: 100vw;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .notfoundimage {
     align-self: center;
 }
-.ellipseleftbottom {
-    align-self: flex-start;
-    margin: 0;
-    padding: 0;
-}
-.ellipserighttop {
-    align-self: flex-end;
-}
-
 .notfoundtxt {
     display: flex;
     flex-direction: column;
