@@ -1,0 +1,22 @@
+:root {
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    /*  */
+    --root-pink: #ff0099;
+    --root-green: #25ed6e;
+
+    --root-light-pink: #25ee6e;
+    --root-dark-pink: #21d260;
+
+    --root-dark-green: #fe0058;
+    --root-dark-green: #e1004e;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}

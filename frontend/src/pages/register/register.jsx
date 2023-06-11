@@ -72,138 +72,143 @@ function Register() {
         }
     };
     return (
-        <div className={styles.container}>
-            <form
-                method="POST"
-                id="form"
-                className={styles.form}
-                onSubmit={(e) => {
-                    setLoading(true);
-                    e.preventDefault();
-                    registerSubmit();
-                }}
-            >
-                <h2>Register</h2>
-                <div className={styles.formControl}>
-                    <label htmlFor="first_name">First name</label>
-                    <input
-                        typeof="text"
-                        id="first_name"
-                        name="first_name"
-                        placeholder="Enter First Name"
-                        onChange={handleRegisterChange}
-                    />
-                </div>
-                <div className={styles.formControl}>
-                    <label htmlFor="last_name">Last name</label>
-                    <input
-                        typeof="text"
-                        id="last_name"
-                        name="last_name"
-                        placeholder="Enter Last Name"
-                        onChange={handleRegisterChange}
-                    />
-                </div>
-                <div className={styles.formControl}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        typeof="text"
-                        id="email"
-                        name="email"
-                        placeholder="Enter email"
-                        onChange={handleRegisterChange}
-                    />
-                </div>
-                <div className={styles.formControl}>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        typeof="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter password"
-                        onChange={handleRegisterChange}
-                    />
-                </div>
-
-                <div className={`${styles.formControl}  ${styles.dob}`}>
-                    <label>Date of birth</label>
-                    <span className={styles.selectBOD}>
-                        <select name="birthDay" onChange={handleRegisterChange}>
-                            {days.map((day, i) => (
-                                <option value={day} key={i}>
-                                    {day}
-                                </option>
-                            ))}
-                        </select>
-                        <select
-                            name="birthMonth"
+        <div className={styles.body}>
+            <div className={styles.container}>
+                <form
+                    method="POST"
+                    id="form"
+                    className={styles.form}
+                    onSubmit={(e) => {
+                        setLoading(true);
+                        e.preventDefault();
+                        registerSubmit();
+                    }}
+                >
+                    <h2>Register</h2>
+                    <div className={styles.formControl}>
+                        <label htmlFor="first_name">First name</label>
+                        <input
+                            typeof="text"
+                            id="first_name"
+                            name="first_name"
+                            placeholder="Enter First Name"
                             onChange={handleRegisterChange}
-                        >
-                            {months.map((month, i) => (
-                                <option value={month} key={i}>
-                                    {month}
-                                </option>
-                            ))}
-                        </select>
-                        <select
-                            name="birthYear"
+                        />
+                    </div>
+                    <div className={styles.formControl}>
+                        <label htmlFor="last_name">Last name</label>
+                        <input
+                            typeof="text"
+                            id="last_name"
+                            name="last_name"
+                            placeholder="Enter Last Name"
                             onChange={handleRegisterChange}
-                        >
-                            {years.map((year, i) => (
-                                <option value={year} key={i}>
-                                    {year}
-                                </option>
-                            ))}
-                        </select>
-                    </span>
-                </div>
+                        />
+                    </div>
+                    <div className={styles.formControl}>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            typeof="text"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email"
+                            onChange={handleRegisterChange}
+                        />
+                    </div>
+                    <div className={styles.formControl}>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            typeof="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            onChange={handleRegisterChange}
+                        />
+                    </div>
 
-                <div className={`${styles.formControl}  ${styles.gender}`}>
-                    <label>Gender</label>
-                    <span className={styles.inputGender}>
-                        <label htmlFor="male">
-                            male
-                            <input
-                                type="radio"
-                                name="gender"
-                                id="male"
-                                value="male"
+                    <div className={`${styles.formControl}  ${styles.dob}`}>
+                        <label>Date of birth</label>
+                        <span className={styles.selectBOD}>
+                            <select
+                                name="birthDay"
                                 onChange={handleRegisterChange}
-                            />
-                        </label>
-                        <label htmlFor="female">
-                            female
-                            <input
-                                type="radio"
-                                name="gender"
-                                id="female"
-                                value="female"
+                            >
+                                {days.map((day, i) => (
+                                    <option value={day} key={i}>
+                                        {day}
+                                    </option>
+                                ))}
+                            </select>
+                            <select
+                                name="birthMonth"
                                 onChange={handleRegisterChange}
-                            />
-                        </label>
-                        <label htmlFor="other">
-                            other
-                            <input
-                                type="radio"
-                                name="gender"
-                                id="other"
-                                value="other"
+                            >
+                                {months.map((month, i) => (
+                                    <option value={month} key={i}>
+                                        {month}
+                                    </option>
+                                ))}
+                            </select>
+                            <select
+                                name="birthYear"
                                 onChange={handleRegisterChange}
-                            />
-                        </label>
-                    </span>
-                </div>
-                <button>Register</button>
-                <div className={styles.loading}>
-                    <BeatLoader
-                        color="#3498db"
-                        loading={loading}
-                        size={10}
-                        aria-label="Loading Spinner"
-                        data-testid="loader"
-                    />
-                </div>
-            </form>
+                            >
+                                {years.map((year, i) => (
+                                    <option value={year} key={i}>
+                                        {year}
+                                    </option>
+                                ))}
+                            </select>
+                        </span>
+                    </div>
+
+                    <div className={`${styles.formControl}  ${styles.gender}`}>
+                        <label>Gender</label>
+                        <span className={styles.inputGender}>
+                            <label htmlFor="male">
+                                male
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    id="male"
+                                    value="male"
+                                    onChange={handleRegisterChange}
+                                />
+                            </label>
+                            <label htmlFor="female">
+                                female
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    id="female"
+                                    value="female"
+                                    onChange={handleRegisterChange}
+                                />
+                            </label>
+                            <label htmlFor="other">
+                                other
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    id="other"
+                                    value="other"
+                                    onChange={handleRegisterChange}
+                                />
+                            </label>
+                        </span>
+                    </div>
+                    <button>Register</button>
+                    <div className={styles.loading}>
+                        <BeatLoader
+                            color="#3498db"
+                            loading={loading}
+                            size={10}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

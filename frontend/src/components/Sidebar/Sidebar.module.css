@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+.body {
+    height: fit-content;
+    width: 100%;
+    background-color: #2ecc71;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    margin: 0;
+}
+header {
+    position: fixed;
+    top: 0;
+    height: 56px;
+    z-index: 9999999999999;
+    background: #0077ffd2;
+    width: 100%;
+    display: grid;
+
+    background: #000000;
+    border-radius: 10px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff555;
+    padding: 5px 1rem;
+}

@@ -17,39 +17,41 @@ function Login() {
     };
 
     return (
-        <div className={styles.container}>
-            <form
-                method="POST"
-                id="form"
-                className={styles.form}
-                onSubmit={(e) => e.preventDefault()}
-            >
-                <h2>Log In</h2>
+        <div className={styles.body}>
+            <div className={styles.container}>
+                <form
+                    method="POST"
+                    id="form"
+                    className={styles.form}
+                    onSubmit={(e) => e.preventDefault()}
+                >
+                    <h2>Log In</h2>
 
-                <div className={styles.formControl}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        typeof="text"
-                        id="email"
-                        name="email"
-                        placeholder="Enter email"
-                        onChange={handleLoginChange}
-                    />
-                </div>
+                    <div className={styles.formControl}>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            typeof="text"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email"
+                            onChange={handleLoginChange}
+                        />
+                    </div>
 
-                <div className={styles.formControl}>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        typeof="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter password"
-                        onChange={handleLoginChange}
-                    />
-                </div>
+                    <div className={styles.formControl}>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            typeof="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            onChange={handleLoginChange}
+                        />
+                    </div>
 
-                <button>Log In</button>
-            </form>
+                    <button>Log In</button>
+                </form>
+            </div>
         </div>
     );
 }
