@@ -73,7 +73,6 @@
         gap: 12px;
         border-radius: 8px;
         flex-basis: 70%;
-        // background-color: red;
         .navigation {
             margin: 2px;
             display: flex;
@@ -155,11 +154,13 @@
         }
     }
     .headerRight {
+        display: flex;
         margin: 0 10px 0 0;
         gap: 2px;
         display: flex;
         flex-flow: row wrap;
         align-items: center;
+        flex-basis: 16%;
         button {
             padding: 0px;
             width: 99px;
@@ -184,6 +185,240 @@
                 font-style: normal;
                 font-weight: 700;
             }
+        }
+
+        .profile_link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 3px 10px 3px 6px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            margin-right: 10px;
+        }
+        .profile_link img {
+            width: 28.7px;
+            height: 28.7px;
+            border-radius: 50%;
+            border: 1px solid #27272a;
+        }
+
+        .profile_link .insidelink {
+            display: flex;
+            align-items: center;
+            flex-flow: row wrap;
+        }
+        .profile_link .insidelink .txt {
+            margin-left: 5px;
+        }
+    }
+}
+
+// Responsive
+
+@media (max-width: 1440px) {
+    .headerLeft {
+        .cdimg {
+            display: none;
+        }
+    }
+    .headerRight {
+        .profile_link .txt {
+        }
+        .SignIn {
+        }
+        .register {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1128px) {
+    .header {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+        .headerLeft {
+        }
+        .headerCenter {
+            justify-content: center;
+            align-items: center;
+            flex-basis: 60%;
+
+            .insidelink {
+                .txt {
+                    display: none;
+                }
+            }
+        }
+        .headerRight {
+            align-items: center;
+            justify-content: center;
+
+            flex-basis: 20%;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .header {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+        .headerLeft {
+        }
+        .headerCenter {
+            justify-content: center;
+            align-items: center;
+            flex-basis: 60%;
+
+            .insidelink {
+                .txt {
+                    display: none;
+                }
+            }
+        }
+        .headerRight {
+            align-items: center;
+            justify-content: center;
+            flex-basis: 20%;
+            .profile_link .txt {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+        .headerLeft {
+            display: none;
+        }
+        .headerCenter {
+            justify-content: center;
+            align-items: center;
+            flex-basis: content;
+            .insidelink {
+                .txt {
+                    display: none;
+                }
+            }
+        }
+        .headerRight {
+            align-items: center;
+            justify-content: center;
+            flex-basis: content;
+            .profile_link .txt {
+                display: none;
+            }
+        }
+    }
+}
+@media (max-width: 580px) {
+    .headerRight {
+        button {
+            max-width: 40px;
+            .txt {
+                font-size: 10px;
+                font-weight: 100;
+            }
+        }
+        .SignIn {
+        }
+        .register {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    .headerCenter {
+        justify-content: space-evenly;
+        align-items: center;
+        flex-basis: content;
+        .links {
+            width: 10px;
+        }
+    }
+    .headerRight {
+        button {
+            max-width: 40px;
+            .txt {
+                font-size: 10px;
+                font-weight: 100;
+            }
+        }
+        .SignIn {
+        }
+        .register {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 404px) {
+    .header {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        .headerLeft {
+            display: none;
+        }
+        .headerCenter {
+            justify-content: space-evenly;
+            align-items: center;
+            flex-basis: content;
+            .links {
+                width: 10px;
+            }
+            .insidelink {
+                .txt {
+                    display: none;
+                }
+            }
+        }
+        .headerRight {
+            align-items: center;
+            justify-content: center;
+            flex-basis: content;
+
+            .profile_link .txt {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .header {
+        .headerLeft {
+        }
+        .headerCenter {
+            justify-content: space-evenly;
+            align-items: center;
+            flex-basis: content;
+            .links {
+                width: 10px;
+            }
+            .insidelink {
+                .txt {
+                    display: none;
+                }
+            }
+        }
+        .headerRight {
+            display: none;
         }
     }
 }

@@ -10,14 +10,14 @@ function App() {
             <Navbar />
 
             <Routes>
-                {/* <Route element={<LoggedInRoutes />}> */}
-                <Route path="/" element={<Home />} />
-                {/* </Route> */}
-                {/* <Route element={<NotLoggedInRoutes />}> */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="*" element={<Notfound />} />
-                {/* </Route> */}
+                <Route element={<LoggedInRoutes />}>
+                    <Route path="/" element={<Home />} />
+                </Route>
+                <Route element={<NotLoggedInRoutes />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="*" element={<Notfound />} />
+                </Route>
             </Routes>
         </div>
     );

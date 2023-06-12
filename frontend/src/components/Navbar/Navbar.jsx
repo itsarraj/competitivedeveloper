@@ -2,10 +2,20 @@ import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../reducers/userReducer';
+import { useEffect, useRef } from 'react';
 
 export default function Navbar() {
     const user = useSelector(userSelector);
     console.log('user nav ', user);
+
+    const flagresult = () => {
+        if (user?.id) {
+            return true;
+        }
+        return false;
+    };
+    let isAuthenticated = flagresult();
+
     return (
         <div className={styles.body}>
             <header className={styles.header}>
@@ -15,11 +25,12 @@ export default function Navbar() {
                             <img src="/favicon/favicon.ico" alt="" />
                         </div>
                     </Link>
-                    <span>
+                    <span className={styles.cdimg}>
                         <span className={styles.competitive}>C</span>
                         <span className={styles.developer}>D</span>
                     </span>
                 </div>
+
                 <div className={styles.headerCenter}>
                     <div className={styles.navigation}>
                         <Link
@@ -87,20 +98,39 @@ export default function Navbar() {
                 </div>
 
                 <div className={styles.headerRight}>
-                    <button className={styles.SignIn}>
-                        <Link to="/login">
-                            <div className={styles.txt}>
-                                <span>Sign In</span>
-                            </div>
+                    {isAuthenticated ? (
+                        <Link to="/profile" className={styles.profile_link}>
+                            <span className={styles.insidelink}>
+                                <img
+                                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                    alt=""
+                                    className={styles.img}
+                                    width="40rem"
+                                />
+                                <span className={styles.txt}>
+                                    {user?.first_name + ' ' + user?.last_name ||
+                                        'Profile'}
+                                </span>
+                            </span>
                         </Link>
-                    </button>
-                    <button className={styles.register}>
-                        <Link to="/register">
-                            <div className={styles.txt}>
-                                <span>Register</span>
-                            </div>
-                        </Link>
-                    </button>
+                    ) : (
+                        <>
+                            <button className={styles.SignIn}>
+                                <Link to="/login">
+                                    <div className={styles.txt}>
+                                        <span>Sign In</span>
+                                    </div>
+                                </Link>
+                            </button>
+                            <button className={styles.register}>
+                                <Link to="/register">
+                                    <div className={styles.txt}>
+                                        <span>Register</span>
+                                    </div>
+                                </Link>
+                            </button>
+                        </>
+                    )}
                 </div>
             </header>
         </div>
