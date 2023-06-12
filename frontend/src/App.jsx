@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home, Login, Notfound, Register } from './pages/index.js';
 import { Navbar } from './components/index.js';
-import styles from './app.module.scss';
+// import styles from './app.module.scss';
 function App() {
     return (
         <div>

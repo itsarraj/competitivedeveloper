@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styles from './register.module.scss';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BeatLoader from 'react-spinners/BeatLoader';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -29,11 +29,15 @@ function Register() {
         birthDay,
         gender,
     } = user;
-    const yearTemp = new Date().getFullYear();
+
+    // handle change
     const handleRegisterChange = (e) => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value });
     };
+
+    // Date Setup
+    const yearTemp = new Date().getFullYear();
     const years = Array.from(new Array(110), (v, i) => yearTemp - i);
     const months = Array.from(new Array(12), (v, i) => 1 + i);
     const getDays = () => {
@@ -61,7 +65,7 @@ function Register() {
                 }
             );
             console.log(data);
-            const { message, ...rest } = data;
+            const { ...rest } = data;
             setTimeout(() => {
                 dispatch({ type: 'LOGIN', payload: rest });
                 Cookies.set('user', JSON.stringify(rest));
