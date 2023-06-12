@@ -64,7 +64,7 @@ function Register() {
                     gender,
                 }
             );
-            console.log(data);
+            console.log('data', data);
             const { ...rest } = data;
             setTimeout(() => {
                 dispatch({ type: 'LOGIN', payload: rest });

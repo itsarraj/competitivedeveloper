@@ -1,23 +1,22 @@
 import Cookies from 'js-cookie';
 
-const initialState = null;
+const initialState = {
+    user: Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null,
+};
 
 import { createSlice } from '@reduxjs/toolkit';
 
-const noteSlice = createSlice({
+const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
         Login: (state, action) => {
             return action.payload;
         },
-        default: (state, action) => {
-            return state;
-        },
     },
 });
 
-export const userReducer = noteSlice.reducer;
-export const actions = noteSlice.actions;
+export const userReducer = userSlice.reducer;
+export const actions = userSlice.actions;
 // Selector
-export const noteSelector = (state) => state.userReducer.notes;
+export const noteSelector = (state) => state.userReducer.user;
