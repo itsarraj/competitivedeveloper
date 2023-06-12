@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import BeatLoader from 'react-spinners/BeatLoader';
 import Cookies from 'js-cookie';
+import { userActions } from '../../reducers/userReducer';
 
 const loginInfos = {
     email: '',
@@ -33,9 +34,10 @@ function Login() {
                 }
             );
             console.log('data login', data);
-            dispatch({ type: 'LOGIN', payload: data });
+            dispatch(userActions.LOGIN(data));
+
             Cookies.set('user', JSON.stringify(data));
-            // navigate('/');
+            navigate('/');
         } catch (error) {
             setLoading(false);
         }

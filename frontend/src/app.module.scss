@@ -5,13 +5,25 @@
     --root-pink: #ff0099;
     --root-green: #25ed6e;
 
-    --root-light-pink: #25ee6e;
-    --root-dark-pink: #21d260;
+    --root-light-green: #25ee6e;
+    --root-dark-green: #21d260;
 
-    --root-dark-green: #fe0058;
-    --root-dark-green: #e1004e;
+    --root-dark-pink: #fe0058;
+    --root-dark-pink: #e1004e;
 }
 
 * {
     font-family: 'Manrope', sans-serif;
+}
+
+.main {
+    position: sticky;
+    display: flex;
+    flex-flow: column wrap;
+    padding-top: 56px;
+
+    .main_wrap {
+        background-color: #25ed6e;
+        margin: 0 0;
+    }
 }

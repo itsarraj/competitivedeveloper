@@ -68,7 +68,6 @@ function Register() {
             console.log('data', data);
             setTimeout(() => {
                 dispatch(userActions.LOGIN(data));
-
                 Cookies.set('user', JSON.stringify(data));
                 navigate('/');
             }, 2000);
