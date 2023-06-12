@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import BeatLoader from 'react-spinners/BeatLoader';
+import Cookies from 'js-cookie';
 
 const loginInfos = {
     email: '',
@@ -15,13 +16,28 @@ function Login() {
     const navigate = useNavigate();
     const [login, setLogin] = useState(loginInfos);
     const { email, password } = login;
-    console.log(login);
+    console.log('login ', login);
     const handleLoginChange = (e) => {
         const { name, value } = e.target;
         setLogin({ ...login, [name]: value });
     };
     const [loading, setLoading] = useState(false);
+    const loginSubmit = async () => {
+        try {
+            setLoading(true);
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/login`,
+                {
+                    email,
+                    password,
+                }
+            );
 
+            dispatch({ type: 'LOGIN', payload: data });
+            Cookies.set('user', JSON.stringify(data));
+            navigate('/');
+        } catch (error) {}
+    };
     return (
         <div className={styles.body}>
             <div className={styles.container}>
