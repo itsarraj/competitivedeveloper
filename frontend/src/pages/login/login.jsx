@@ -32,11 +32,13 @@ function Login() {
                     password,
                 }
             );
-
+            console.log('data login', data);
             dispatch({ type: 'LOGIN', payload: data });
             Cookies.set('user', JSON.stringify(data));
-            navigate('/');
-        } catch (error) {}
+            // navigate('/');
+        } catch (error) {
+            setLoading(false);
+        }
     };
     return (
         <div className={styles.body}>
@@ -46,7 +48,6 @@ function Login() {
                     id="form"
                     className={styles.form}
                     onSubmit={(e) => {
-                        setLoading(true);
                         e.preventDefault();
                         loginSubmit();
                     }}

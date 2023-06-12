@@ -5,6 +5,7 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
+import { userActions } from '../../reducers/userReducer';
 function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ function Register() {
 
     const registerSubmit = async () => {
         try {
-            console.log(user);
+            console.log('register user', user);
             const { data } = await axios.post(
                 `${import.meta.env.VITE_BACKEND_URL}/register`,
                 {
@@ -65,10 +66,10 @@ function Register() {
                 }
             );
             console.log('data', data);
-            const { ...rest } = data;
             setTimeout(() => {
-                dispatch({ type: 'LOGIN', payload: rest });
-                Cookies.set('user', JSON.stringify(rest));
+                dispatch(userActions.LOGIN(data));
+
+                Cookies.set('user', JSON.stringify(data));
                 navigate('/');
             }, 2000);
         } catch (error) {

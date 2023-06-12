@@ -1,6 +1,11 @@
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../../reducers/userReducer';
+
 export default function Navbar() {
+    const user = useSelector(userSelector);
+    console.log('user nav ', user);
     return (
         <div className={styles.body}>
             <header className={styles.header}>
@@ -17,56 +22,67 @@ export default function Navbar() {
                 </div>
                 <div className={styles.headerCenter}>
                     <div className={styles.navigation}>
-                        <span className={styles.links}>
-                            <Link to="/">
-                                <span className={styles.insidelink}>
-                                    <img
-                                        src="/assets/navbar/home.svg"
-                                        alt=""
-                                        className={styles.img}
-                                    />
-                                    <span className={styles.txt}>Home</span>
-                                </span>
-                            </Link>
-                        </span>
-                        <span className={styles.links}>
-                            <Link to="/dashboard">
-                                <span className={styles.insidelink}>
-                                    <img
-                                        src="/assets/navbar/website.svg"
-                                        alt=""
-                                        className={styles.img}
-                                    />
-                                    <span className={styles.txt}>
-                                        Dashboard
-                                    </span>
-                                </span>
-                            </Link>
-                        </span>
-                        <span className={styles.links}>
-                            <Link to="/friends">
-                                <span className={styles.insidelink}>
-                                    <img
-                                        src="/assets/navbar/user-list.svg"
-                                        alt=""
-                                        className={styles.img}
-                                    />
-                                    <span className={styles.txt}>Friends</span>
-                                </span>
-                            </Link>
-                        </span>
-                        <span className={styles.links}>
-                            <Link to="/search">
-                                <span className={styles.insidelink}>
-                                    <img
-                                        src="/assets/navbar/search.svg"
-                                        alt=""
-                                        className={styles.img}
-                                    />
-                                    <span className={styles.txt}>Search</span>
-                                </span>
-                            </Link>
-                        </span>
+                        <Link
+                            to="/"
+                            className={`${styles.links} ${styles.active}`}
+                        >
+                            <span className={styles.insidelink}>
+                                <img
+                                    src="/assets/navbar/home.svg"
+                                    alt=""
+                                    className={styles.img}
+                                />
+                                <span className={styles.txt}>Home</span>
+                            </span>
+                        </Link>
+
+                        <Link to="/dashboard" className={styles.links}>
+                            <span className={styles.insidelink}>
+                                <img
+                                    src="/assets/navbar/message.svg"
+                                    alt=""
+                                    className={styles.img}
+                                />
+                                <span className={styles.txt}>Messages</span>
+                                <div className={styles.notification}>9+</div>
+                            </span>
+                        </Link>
+
+                        <Link to="/friends" className={styles.links}>
+                            <span className={styles.insidelink}>
+                                <img
+                                    src="/assets/navbar/user-list.svg"
+                                    alt=""
+                                    className={styles.img}
+                                />
+                                <span className={styles.txt}>Friends</span>
+                                <div className={styles.notification}>9+</div>
+                            </span>
+                        </Link>
+
+                        <Link to="/search" className={styles.links}>
+                            <span className={styles.insidelink}>
+                                <img
+                                    src="/assets/navbar/search.svg"
+                                    alt=""
+                                    className={styles.img}
+                                />
+                                <span className={styles.txt}>Search</span>
+                                <div className={styles.notification}>9+</div>
+                            </span>
+                        </Link>
+
+                        <Link to="/notification" className={styles.links}>
+                            <span className={styles.insidelink}>
+                                <img
+                                    src="/assets/navbar/bell.svg"
+                                    alt=""
+                                    className={styles.img}
+                                />
+                                <span className={styles.txt}>Notification</span>
+                                <div className={styles.notification}>9+</div>
+                            </span>
+                        </Link>
                     </div>
                 </div>
 

@@ -33,6 +33,7 @@
         display: flex;
         flex-flow: row wrap;
         align-items: center;
+        flex-basis: 10%;
         span {
             // margin: 0 10px 0 0;
             padding: 2px 10px 2px 10px;
@@ -71,7 +72,7 @@
         align-items: center;
         gap: 12px;
         border-radius: 8px;
-        flex-basis: 50%;
+        flex-basis: 70%;
         // background-color: red;
         .navigation {
             margin: 2px;
@@ -82,8 +83,12 @@
             color: #c7cdf1;
 
             .links {
+                position: relative;
                 &:hover {
                     background: #98ff74;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     border-radius: 5px 5px 0px 0px;
                     background: linear-gradient(
                         180deg,
@@ -118,6 +123,34 @@
                         color: #c7cdf1;
                     }
                 }
+            }
+
+            .active {
+                transform: translateX(0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px 5px 0px 0px;
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.24) -72.24%,
+                    rgba(0, 0, 0, 0.24) 100%
+                );
+                .insidelink {
+                    .txt {
+                        color: #fff;
+                    }
+                }
+            }
+            .notification {
+                position: absolute;
+                top: 3px;
+                right: 0;
+                background: #e41e3f;
+                border-radius: 50px;
+                padding: 1px 5px;
+                font-size: 13px;
+                color: #fff;
             }
         }
     }
