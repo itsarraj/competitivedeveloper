@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { userSelector } from './reducers/userReducer.js';
 import styles from './app.module.scss';
+import Activate from './pages/home/Activate.jsx';
 
 function App() {
     let user = useSelector(userSelector);
@@ -19,6 +20,7 @@ function App() {
                 </div>
                 <div className={styles.main_wrap}>
                     <Routes>
+                        <Route path="/activate/:token" element={<Activate />} />
                         <Route element={<LoggedInRoutes />}>
                             <Route path="/" element={<Home />} />
                             <Route path="*" element={<Notfound />} />

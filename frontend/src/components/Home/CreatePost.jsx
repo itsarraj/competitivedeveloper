@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import styles from './createPost.module.scss';
-
+import EmojiPicker from 'emoji-picker-react';
 export default function CreatePost({ user }) {
+    const [text, setText] = useState('');
+    const [emojiPick, setEmojiPick] = useState(true);
+    const handleTextChange = (e) => {
+        console.log('text', e.target.value);
+        setText(e.target.value);
+    };
+
     return (
         <div className={styles.createPost}>
             <div className={styles.createPost_header}>
@@ -10,7 +18,26 @@ export default function CreatePost({ user }) {
                     srcSet=""
                 />
                 <div className={styles.open_post}>
-                    <input type="text" placeholder="What's on your mind?" />
+                    <textarea
+                        maxLength="100"
+                        value={text}
+                        type="text"
+                        placeholder="What's on your mind?"
+                        onChange={handleTextChange}
+                    ></textarea>
+                </div>
+                <div className={styles.post_emojis_wrap}>
+                    <img
+                        src="/assets/home/emoji.svg"
+                        alt=""
+                        srcSet=""
+                        onClick={() => setEmojiPick(!emojiPick)}
+                    />
+                </div>
+            </div>
+            <div className={styles.emoji_picker_wrap}>
+                <div className={styles.emoji_picker}>
+                    {!emojiPick && <EmojiPicker />}
                 </div>
             </div>
 

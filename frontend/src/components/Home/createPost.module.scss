@@ -22,6 +22,26 @@
             align-items: center;
             padding-left: 10px;
         }
+
+        .post_emojis_wrap {
+            img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                font-weight: 600;
+                padding: 7px;
+                color: #fff;
+                border-radius: 10px;
+                font-size: 14px;
+                background: hsl(339, 100%, 80%);
+                img {
+                }
+                &:hover {
+                    background: #fe0058;
+                }
+            }
+        }
     }
     .createPost_header img {
         width: 40px;
@@ -55,6 +75,22 @@
             &:hover {
                 background: #fe0058;
             }
+        }
+    }
+
+    .emoji_picker_wrap {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+        justify-content: center;
+        margin: 5px 10px 5px 10px;
+        .emoji_picker {
+            position: relative;
+            display: flex;
+            flex-flow: column;
+            align-items: flex-end;
+            justify-content: center;
         }
     }
 }

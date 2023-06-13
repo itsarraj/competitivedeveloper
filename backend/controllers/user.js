@@ -59,11 +59,15 @@ exports.register = async (req, res) => {
             birthDay,
             gender,
         });
-        const emailVerificationToken = generateToken({ id: user._id }, '30m');
+        const emailVerificationToken = generateToken(
+            { id: user._id.toString() },
+            '30m'
+        );
+        // const slicedToken = emailVerificationToken.split('.')[0];
+        // const encodedPath = user._id.toString() + '/' + slicedToken;
 
         const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
         console.log('url to send to email', url);
-
         // await sendVerificationEmail(user.email, user.first_name, url);
 
         // Login
@@ -85,6 +89,7 @@ exports.register = async (req, res) => {
     }
 };
 const { comparePassword } = require('../models/User.js');
+
 exports.activateAccount = async (req, res) => {
     try {
         const { token } = req.body;

@@ -1,0 +1,18 @@
+:root {
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.body {
+    height: fit-content;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    height: fit-content;
+    min-height: 100vh;
+    padding: 56px 28px 56px 28px;
+}
