@@ -4,7 +4,14 @@ import { userSelector } from '../reducers/userReducer';
 
 export default function NotLoggedInRoutes() {
     const user = useSelector(userSelector);
-    console.log('not useSelector', user);
+    const flagresult = () => {
+        if (user?.id) {
+            return true;
+        }
+        return false;
+    };
+    let isAuthenticated = flagresult();
+    console.log('not logged in routes', isAuthenticated);
 
-    return user ? <Navigate to="/" /> : <Outlet />;
+    return isAuthenticated ? <Navigate to="/" /> : <Outlet />;
 }
