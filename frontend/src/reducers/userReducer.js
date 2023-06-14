@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     user: Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null,
@@ -11,6 +11,8 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         LOGIN: (state, action) => {
+            console.log('action', action);
+            console.log('state', state);
             state.user = action.payload;
             return;
         },
@@ -19,5 +21,15 @@ const userSlice = createSlice({
 
 export const userReducer = userSlice.reducer;
 export const userActions = userSlice.actions;
+
 // Selector
-export const userSelector = (state) => ({ ...state.userReducer.user });
+const selectUser = createSelector(
+    [(state) => ({ ...state.userReducer.user })],
+    (user) => {
+        return user;
+    }
+);
+
+export const userSelector = (state) => selectUser(state);
+
+// export const userSelector = (state) => ({ ...state.userReducer.user });

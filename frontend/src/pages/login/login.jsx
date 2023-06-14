@@ -59,7 +59,7 @@ function Login() {
                     <div className={styles.formControl}>
                         <label htmlFor="email">Email</label>
                         <input
-                            typeof="text"
+                            type="text"
                             id="email"
                             name="email"
                             placeholder="Enter email"
@@ -70,7 +70,7 @@ function Login() {
                     <div className={styles.formControl}>
                         <label htmlFor="password">Password</label>
                         <input
-                            typeof="password"
+                            type="password"
                             id="password"
                             name="password"
                             placeholder="Enter password"
@@ -94,7 +94,7 @@ function Login() {
                 <div className={styles.registerlink}>
                     <Link to="/register">
                         <span className={styles.txt}>
-                            Don't have an account? Register
+                            {`Don't have an account? Register`}
                         </span>
                     </Link>
                 </div>

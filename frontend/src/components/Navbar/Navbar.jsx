@@ -2,19 +2,23 @@ import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../reducers/userReducer';
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 export default function Navbar() {
     const user = useSelector(userSelector);
     console.log('user nav ', user);
-
-    const flagresult = () => {
-        if (user?.id) {
-            return true;
-        }
-        return false;
-    };
-    let isAuthenticated = flagresult();
+    const [navProfileName, setNavProfileName] = useState('Profile');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // if (user?.id) {
+    //     const name = user.first_name + ' ' + user.last_name;
+    //     if (name.length > 15) {
+    //         name.slice(0, 15);
+    //         name.concat('...');
+    //     }
+    //     setNavProfileName(name);
+    //     console.log('navProfileName ', navProfileName);
+    //     setIsAuthenticated(true);
+    // }
 
     return (
         <div className={styles.body}>
@@ -108,8 +112,7 @@ export default function Navbar() {
                                     width="40rem"
                                 />
                                 <span className={styles.txt}>
-                                    {user?.first_name + ' ' + user?.last_name ||
-                                        'Profile'}
+                                    {'navProfileName'}
                                 </span>
                             </span>
                         </Link>

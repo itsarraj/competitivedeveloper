@@ -92,7 +92,7 @@ function Register() {
                     <div className={styles.formControl}>
                         <label htmlFor="first_name">First name</label>
                         <input
-                            typeof="text"
+                            type="text"
                             id="first_name"
                             name="first_name"
                             placeholder="Enter First Name"
@@ -102,7 +102,7 @@ function Register() {
                     <div className={styles.formControl}>
                         <label htmlFor="last_name">Last name</label>
                         <input
-                            typeof="text"
+                            type="text"
                             id="last_name"
                             name="last_name"
                             placeholder="Enter Last Name"
@@ -112,7 +112,7 @@ function Register() {
                     <div className={styles.formControl}>
                         <label htmlFor="email">Email</label>
                         <input
-                            typeof="text"
+                            type="text"
                             id="email"
                             name="email"
                             placeholder="Enter email"
@@ -122,7 +122,7 @@ function Register() {
                     <div className={styles.formControl}>
                         <label htmlFor="password">Password</label>
                         <input
-                            typeof="password"
+                            type="password"
                             id="password"
                             name="password"
                             placeholder="Enter password"
