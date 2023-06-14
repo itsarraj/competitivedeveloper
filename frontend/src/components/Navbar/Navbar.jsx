@@ -1,25 +1,52 @@
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { userSelector } from '../../reducers/userReducer';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { userActions, userSelector } from '../../reducers/userReducer';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Navbar() {
     const user = useSelector(userSelector);
-    console.log('user nav ', user);
-    const [navProfileName, setNavProfileName] = useState('Profile');
+    const dispatch = useDispatch();
+    const [navProfileName, setNavProfileName] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    // if (user?.id) {
-    //     const name = user.first_name + ' ' + user.last_name;
-    //     if (name.length > 15) {
-    //         name.slice(0, 15);
-    //         name.concat('...');
-    //     }
-    //     setNavProfileName(name);
-    //     console.log('navProfileName ', navProfileName);
-    //     setIsAuthenticated(true);
-    // }
+    useEffect(() => {
+        if (user?.id) {
+            const name = user.first_name + ' ' + user.last_name;
+            if (name.length > 15) {
+                let newName = name.slice(0, 15);
+                newName = newName.concat('...');
+                setNavProfileName(newName);
+            }
+            setIsAuthenticated(true);
+        }
+    }, [user, navProfileName, isAuthenticated]);
 
+    useEffect(() => {
+        setNavProfileName(user.first_name + ' ' + user.last_name);
+    }, [user, navProfileName, isAuthenticated]);
+
+    const logoutFunction = async () => {
+        try {
+            console.log('logout', user);
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/logout`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                }
+            );
+
+            console.log('data', data);
+            dispatch(userActions.LOGOUT());
+            setIsAuthenticated(false);
+            setNavProfileName('');
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <div className={styles.body}>
             <header className={styles.header}>
@@ -103,19 +130,31 @@ export default function Navbar() {
 
                 <div className={styles.headerRight}>
                     {isAuthenticated ? (
-                        <Link to="/profile" className={styles.profile_link}>
-                            <span className={styles.insidelink}>
-                                <img
-                                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                    alt=""
-                                    className={styles.img}
-                                    width="40rem"
-                                />
-                                <span className={styles.txt}>
-                                    {'navProfileName'}
+                        <>
+                            <Link to="/profile" className={styles.profile_link}>
+                                <span className={styles.insidelink}>
+                                    <img
+                                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                        alt=""
+                                        className={styles.img}
+                                        width="40rem"
+                                    />
+                                    <span className={styles.txt}>
+                                        {navProfileName}
+                                    </span>
                                 </span>
-                            </span>
-                        </Link>
+                            </Link>
+                            <Link to="/">
+                                <button
+                                    className={styles.Logout}
+                                    onClick={logoutFunction}
+                                >
+                                    <div className={styles.txt}>
+                                        <span>Logout</span>
+                                    </div>
+                                </button>
+                            </Link>
+                        </>
                     ) : (
                         <>
                             <button className={styles.SignIn}>

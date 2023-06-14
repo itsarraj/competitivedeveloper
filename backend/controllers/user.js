@@ -76,7 +76,7 @@ exports.register = async (req, res) => {
         res.send({
             id: user._id,
             username: user.username,
-            picture: user.picture,
+            avatar: user.avatar,
             first_name: user.first_name,
             last_name: user.last_name,
             token: token,
@@ -138,7 +138,7 @@ exports.login = async (req, res) => {
                         res.send({
                             id: user._id,
                             username: user.username,
-                            picture: user.picture,
+                            avatar: user.avatar,
                             first_name: user.first_name,
                             last_name: user.last_name,
                             token: token,
@@ -149,7 +149,7 @@ exports.login = async (req, res) => {
                         res.send({
                             id: user._id,
                             username: user.username,
-                            picture: user.picture,
+                            avatar: user.avatar,
                             first_name: user.first_name,
                             last_name: user.last_name,
                             token: token,
@@ -166,4 +166,14 @@ exports.login = async (req, res) => {
             }
         );
     } catch (error) {}
+};
+
+exports.logout = async (req, res) => {
+    try {
+        res.send({ message: 'Logout Success' });
+    } catch (error) {
+        res.send({ message: 'Logout Failed' });
+
+        console.log(error);
+    }
 };

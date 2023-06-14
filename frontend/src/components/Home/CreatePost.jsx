@@ -33,25 +33,25 @@ export default function CreatePost({ user }) {
 
     const postSubmit = async () => {
         // setLoading(true);
-        // await axios.post(
-        //     `${import.meta.env.VITE_BACKEND_URL}/create-post`,
-        //     {
-        //         text,
-        //         user: user.id,
-        //     },
-        //     {
-        //         headers: {
-        //             Authorization: `Bearer ${user.token}`,
-        //         },
-        //     }
-        // );
+        await axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}/create-post`,
+            {
+                text,
+                user: user.id,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
+            }
+        );
         // setLoading(false);
     };
     return (
         <div className={styles.createPost}>
             <div className={styles.createPost_header}>
                 <img
-                    // src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     alt=""
                     srcSet=""
                 />

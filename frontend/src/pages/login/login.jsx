@@ -17,7 +17,6 @@ function Login() {
     const navigate = useNavigate();
     const [login, setLogin] = useState(loginInfos);
     const { email, password } = login;
-    console.log('login ', login);
     const handleLoginChange = (e) => {
         const { name, value } = e.target;
         setLogin({ ...login, [name]: value });

@@ -11,7 +11,6 @@ export default function LoggedInRoutes() {
         return false;
     };
     let isAuthenticated = flagresult();
-    console.log('logged in routes', isAuthenticated);
 
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }

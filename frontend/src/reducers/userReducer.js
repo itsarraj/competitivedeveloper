@@ -11,9 +11,12 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         LOGIN: (state, action) => {
-            console.log('action', action);
-            console.log('state', state);
             state.user = action.payload;
+            return;
+        },
+        LOGOUT: (state, action) => {
+            state.user = null;
+            Cookies.set('user', null);
             return;
         },
     },

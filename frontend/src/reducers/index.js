@@ -1,2 +1,3 @@
 import { userReducer } from './userReducer';
-export { userReducer };
+import { postReducer } from './postReducer';
+export { userReducer, postReducer };
