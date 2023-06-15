@@ -19,6 +19,11 @@ const userSlice = createSlice({
             Cookies.set('user', null);
             return;
         },
+        PROFILE_REFRESH: (state, action) => {
+            state.user = action.payload;
+            Cookies.set('user', JSON.stringify(action.payload));
+            return;
+        },
     },
 });
 

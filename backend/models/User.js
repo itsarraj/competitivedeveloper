@@ -37,7 +37,6 @@ const userSchema = mongoose.Schema(
         },
         avatar: {
             type: String,
-            trim: true,
             default: defaultProfilePath,
         },
         cover: {

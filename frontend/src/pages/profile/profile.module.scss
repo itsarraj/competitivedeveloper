@@ -103,13 +103,18 @@
                             justify-content: flex-start;
                             align-items: center;
                             gap: 5px;
+
                             .select_avatar_container {
+                                background-color: #121212;
                                 // align-content: center;
-                                background-color: #27272a;
-                                border-radius: 50%;
+                                // border-radius: 50%;
                                 width: 100px;
                                 height: 100px;
                                 border: 2px solid #27272a;
+                                &:hover {
+                                    border: 2px solid #21d260;
+                                    background-color: #27272a;
+                                }
                             }
                             img {
                                 width: 95%;

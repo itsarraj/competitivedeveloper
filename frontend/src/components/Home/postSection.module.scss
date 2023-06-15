@@ -4,12 +4,13 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
     margin-top: 1.1rem;
     width: 100%;
-    max-width: 80%;
+    max-width: 40%;
     height: 100%;
-    min-height: 200px;
+    // min-height: 200px;
     display: flex;
     flex-flow: column wrap;
-
+    justify-content: space-between;
+    align-items: flex-start;
     @media (max-width: 530px) {
         width: 100%;
         max-width: 100%;
@@ -17,26 +18,81 @@
     cursor: pointer;
     .post {
         display: flex;
-        align-items: center;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        align-items: flex-start;
         padding: 10px 17px 5px 15px;
-        .postHeaderLeft {
-        }
+        width: 100%;
+        .postHeader {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100%;
+            gap: 20px;
+            padding: 10px 0px;
+            width: 100%;
+            .postHeaderLeft {
+                border-radius: 5%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-content: center;
+                background-color: #27272a;
+                img {
+                    width: 95%;
+                    height: 95%;
+                    padding: 5px;
+                }
+            }
 
-        .postHeaderRight {
+            .postHeaderRight {
+                justify-self: flex-end;
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #27272a;
+            }
         }
-
+        .postMiddle {
+            display: flex;
+            flex-flow: row wrap;
+            // justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            min-width: 100%;
+            padding: 10px 0px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #27272a;
+            width: 100%;
+            .label {
+                color: #fff;
+                padding: 5px;
+                border-radius: 5px;
+                align-self: flex-start;
+                .span {
+                    align-self: flex-end;
+                }
+            }
+        }
         .postBottom {
-            margin: 10px 0px;
-            .postBottomLeft img {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                object-fit: cover;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            min-width: 100%;
+            padding: 10px 0px;
+
+            .postBottomLeft {
             }
 
             .postBottomRight {
-                height: 1px;
-                margin: 5px 0px;
+                // justify-self: flex-end;
             }
         }
     }

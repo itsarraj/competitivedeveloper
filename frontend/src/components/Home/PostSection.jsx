@@ -12,13 +12,22 @@ export default function PostSection({ post }) {
                         <span>{`${post.user.first_name} ${post.user.last_name}`}</span>
                     </div>
                 </div>
+                <div className={styles.postMiddle}>
+                    <span>
+                        <span className={styles.label}>Post : </span>
+
+                        {post.text}
+                    </span>
+                </div>
 
                 <div className={styles.postBottom}>
-                    <div className={styles.postBottomLeft}>
-                        <span>{post.text}</span>
-                    </div>
+                    <div className={styles.postBottomLeft}></div>
                     <div className={styles.postBottomRight}>
-                        <span>{post.createdAt}</span>
+                        <span>
+                            {' '}
+                            <span className={styles.label}>Created :</span>
+                            {post.createdAt}
+                        </span>
                     </div>
                 </div>
             </div>

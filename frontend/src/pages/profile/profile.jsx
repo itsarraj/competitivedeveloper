@@ -19,6 +19,7 @@ function Profile() {
         birthMonth: new Date().getMonth() + 1,
         birthDay: new Date().getDate(),
         gender: '',
+        avatar: '',
     };
 
     const [profileData, setProfileData] = useState(initialProfileData);
@@ -35,7 +36,7 @@ function Profile() {
         '/avatar/Bot-8.svg',
     ];
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     // const navigate = useNavigate();
     // const [login, setLogin] = useState(loginInfos);
     // const { email, password } = login;
@@ -85,11 +86,17 @@ function Profile() {
     // handle change
     const handleProfileDataChange = (e) => {
         const { name, value } = e.target;
-        if (name === 'gender') {
-            setProfileData((prevData) => ({ ...prevData, gender: value }));
-        } else {
-            setProfileData((prevData) => ({ ...prevData, [name]: value }));
-        }
+        console.log('name', name);
+        console.log('value', value);
+
+        setProfileData((prevData) => ({ ...prevData, [name]: value }));
+        // setUser({ ...user, [name]: value });
+    };
+    const handleProfileDataAvatarChange = (name, value) => {
+        console.log('name', name);
+        console.log('value', value);
+
+        setProfileData((prevData) => ({ ...prevData, [name]: value }));
         // setUser({ ...user, [name]: value });
     };
     const profileDataFetch = async () => {
@@ -147,11 +154,13 @@ function Profile() {
                     },
                 }
             );
+            dispatch(userActions.PROFILE_REFRESH(data));
             console.log('data', data);
         } catch (error) {
             console.log('error', error);
         }
     };
+
     return (
         <div className={styles.body}>
             <div className={styles.container}>
@@ -207,18 +216,27 @@ function Profile() {
                                                 styles.select_avatar_container_wrap
                                             }
                                         >
-                                            {avatarData.map((avatar, i) => (
+                                            {avatarData.map((avatar) => (
                                                 <>
                                                     <div
-                                                        key={i}
+                                                        name="avatar"
+                                                        key={avatar}
                                                         className={
                                                             styles.select_avatar_container
                                                         }
                                                     >
                                                         <img
                                                             src={avatar}
-                                                            alt={i}
-                                                            srcSet=""
+                                                            alt={avatar}
+                                                            name="avatar"
+                                                            id="avatar"
+                                                            value={avatar}
+                                                            onClick={() =>
+                                                                handleProfileDataAvatarChange(
+                                                                    'avatar',
+                                                                    avatar
+                                                                )
+                                                            }
                                                         />
                                                     </div>
                                                 </>
