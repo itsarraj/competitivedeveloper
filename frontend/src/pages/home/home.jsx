@@ -31,10 +31,13 @@ export default function Home() {
             }
         };
 
-        if (user && user.token) {
+        if (user && user.token && !posts.length) {
+            console.log('getAllPosts called');
             getAllPosts();
         }
-    }, []); // Empty dependency array to trigger the effect only once
+    }, []); // Add 'posts' as a dependency
+
+    // Empty dependency array to trigger the effect only once
 
     return (
         <div className={styles.body}>

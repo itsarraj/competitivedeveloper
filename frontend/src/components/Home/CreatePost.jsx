@@ -11,8 +11,7 @@ export default function CreatePost({ user }) {
     const [text, setText] = useState('');
     const [emojiPick, setEmojiPick] = useState(true);
     const [cursorPosition, setCursorPosition] = useState();
-    // const [loading, setLoading] = useState(false);
-
+    const dispatch = useDispatch();
     const textRef = useRef(null);
 
     useEffect(() => {
@@ -34,10 +33,6 @@ export default function CreatePost({ user }) {
     };
 
     const postSubmit = async () => {
-        // setLoading(true);
-
-        const dispatch = useDispatch();
-
         const { data } = await axios.post(
             `${import.meta.env.VITE_BACKEND_URL}/create-post`,
             {
@@ -51,9 +46,8 @@ export default function CreatePost({ user }) {
             }
         );
         dispatch(postActions.addPost(data));
-
-        // setLoading(false);
     };
+
     return (
         <div className={styles.createPost}>
             <div className={styles.createPost_header}>
@@ -86,20 +80,12 @@ export default function CreatePost({ user }) {
 
             <div className={styles.create_splitter}></div>
 
-            {/* TODO: Complete the image import later
-             */}
-            {/* <div className={styles.createPost_body}>
-                <div className={`${styles.createPost_icon} ${styles.hover}`}>
-                    <img src="/assets/home/image.svg" alt="" />
-                </div>
-            </div> */}
             <div className={styles.createPost_submit}>
                 <button
                     className={styles.post_submit}
                     onClick={() => {
                         postSubmit();
                     }}
-                    // disabled={loading}
                 >
                     Create Post
                 </button>
@@ -107,9 +93,3 @@ export default function CreatePost({ user }) {
         </div>
     );
 }
-CreatePost.propTypes = {
-    user: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        token: PropTypes.string.isRequired,
-    }).isRequired,
-};
