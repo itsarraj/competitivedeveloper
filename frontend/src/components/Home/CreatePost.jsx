@@ -4,6 +4,8 @@ import EmojiPicker from 'emoji-picker-react';
 import axios from 'axios';
 
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { postActions } from '../../reducers/postReducer';
 
 export default function CreatePost({ user }) {
     const [text, setText] = useState('');
@@ -33,7 +35,10 @@ export default function CreatePost({ user }) {
 
     const postSubmit = async () => {
         // setLoading(true);
-        await axios.post(
+
+        const dispatch = useDispatch();
+
+        const { data } = await axios.post(
             `${import.meta.env.VITE_BACKEND_URL}/create-post`,
             {
                 text,
@@ -45,6 +50,8 @@ export default function CreatePost({ user }) {
                 },
             }
         );
+        dispatch(postActions.addPost(data));
+
         // setLoading(false);
     };
     return (

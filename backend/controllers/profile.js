@@ -9,7 +9,6 @@ exports.getUserProfile = async (req, res) => {
 
 exports.setUserProfile = async (req, res) => {
     try {
-        console.log(req.body);
         const user = await User.findByIdAndUpdate(req.user.id, req.body);
 
         res.json({ message: 'Update Success ', user: user });

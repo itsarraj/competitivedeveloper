@@ -12,6 +12,9 @@ const postSlice = createSlice({
             state.posts = action.payload;
             return;
         },
+        addPost: (state, action) => {
+            state.push(action.payload);
+        },
     },
 });
 

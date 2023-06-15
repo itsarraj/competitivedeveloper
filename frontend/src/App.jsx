@@ -11,31 +11,6 @@ import { useEffect } from 'react';
 import { postActions } from './reducers/postReducer.js';
 
 function App() {
-    const user = useSelector(userSelector);
-    const dispatch = useDispatch();
-
-    if (user && user.token) {
-        useEffect(() => {
-            getAllPosts();
-        }, []);
-    }
-
-    const getAllPosts = async () => {
-        try {
-            const { data } = await axios.get(
-                `${import.meta.env.VITE_BACKEND_URL}/get-all-posts`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${user.token}`,
-                    },
-                }
-            );
-            dispatch(postActions.setPost(data));
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     return (
         <>
             <div className={styles.main}>

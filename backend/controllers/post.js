@@ -11,6 +11,7 @@ exports.createPost = async (req, res) => {
         // await post.save();
 
         const post = await new Post(req.body).save();
+        console.log(post);
         res.json({
             message: 'Post created',
             post,
