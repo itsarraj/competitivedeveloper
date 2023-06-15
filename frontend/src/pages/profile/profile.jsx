@@ -7,9 +7,9 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import Cookies from 'js-cookie';
 import { userActions, userSelector } from '../../reducers/userReducer';
 
-function Login() {
+function Profile() {
     const user = useSelector(userSelector);
-
+    const [toggleEditAvatar, setToggleEditAvatar] = useState(false);
     const initialProfileData = {
         username: '',
         first_name: '',
@@ -22,6 +22,19 @@ function Login() {
     };
 
     const [profileData, setProfileData] = useState(initialProfileData);
+
+    const avatarData = [
+        '/avatar/Bot-0.svg',
+        '/avatar/Bot-1.svg',
+        '/avatar/Bot-2.svg',
+        '/avatar/Bot-3.svg',
+        '/avatar/Bot-4.svg',
+        '/avatar/Bot-5.svg',
+        '/avatar/Bot-6.svg',
+        '/avatar/Bot-7.svg',
+        '/avatar/Bot-8.svg',
+    ];
+
     // const dispatch = useDispatch();
     // const navigate = useNavigate();
     // const [login, setLogin] = useState(loginInfos);
@@ -150,14 +163,68 @@ function Login() {
                             >
                                 <div
                                     className={
-                                        styles.profile_data_avatar_container
+                                        styles.profile_data_avatar_container_wrap
                                     }
                                 >
-                                    <img
-                                        src={profileData.avatar}
-                                        alt="avatar"
-                                        srcSet=""
-                                    />
+                                    <div
+                                        className={styles.avatar_container_wrap}
+                                    >
+                                        <div
+                                            className={
+                                                styles.profile_data_avatar_container
+                                            }
+                                        >
+                                            <img
+                                                src={profileData.avatar}
+                                                alt="avatar"
+                                                srcSet=""
+                                            />
+                                        </div>
+                                        <div
+                                            className={
+                                                styles.profile_edit_option
+                                            }
+                                            onClick={() =>
+                                                setToggleEditAvatar(
+                                                    !toggleEditAvatar
+                                                )
+                                            }
+                                        >
+                                            <img
+                                                src="/assets/profile/pen.svg"
+                                                alt="edit"
+                                                srcSet=""
+                                            />
+                                        </div>
+                                    </div>
+                                    {/* Selection of Avatar */}
+                                    <span className={styles.avatar_change_text}>
+                                        Select one to Change Avatar
+                                    </span>
+                                    {toggleEditAvatar && (
+                                        <div
+                                            className={
+                                                styles.select_avatar_container_wrap
+                                            }
+                                        >
+                                            {avatarData.map((avatar, i) => (
+                                                <>
+                                                    <div
+                                                        key={i}
+                                                        className={
+                                                            styles.select_avatar_container
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={avatar}
+                                                            alt={i}
+                                                            srcSet=""
+                                                        />
+                                                    </div>
+                                                </>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                                 <span
                                     className={
@@ -387,4 +454,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Profile;

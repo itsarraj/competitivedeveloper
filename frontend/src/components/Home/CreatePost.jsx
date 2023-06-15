@@ -57,11 +57,7 @@ export default function CreatePost({ user }) {
     return (
         <div className={styles.createPost}>
             <div className={styles.createPost_header}>
-                <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt=""
-                    srcSet=""
-                />
+                <img src={user.avatar} alt="" srcSet="" />
                 <div className={styles.open_post}>
                     <textarea
                         ref={textRef}

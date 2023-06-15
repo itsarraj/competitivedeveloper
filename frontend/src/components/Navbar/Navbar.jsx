@@ -63,69 +63,83 @@ export default function Navbar() {
                 </div>
 
                 <div className={styles.headerCenter}>
-                    <div className={styles.navigation}>
-                        <Link
-                            to="/"
-                            className={`${styles.links} ${styles.active}`}
-                        >
-                            <span className={styles.insidelink}>
-                                <img
-                                    src="/assets/navbar/home.svg"
-                                    alt=""
-                                    className={styles.img}
-                                />
-                                <span className={styles.txt}>Home</span>
-                            </span>
-                        </Link>
+                    {isAuthenticated ? (
+                        <div className={styles.navigation}>
+                            <Link
+                                to="/"
+                                className={`${styles.links} ${styles.active}`}
+                            >
+                                <span className={styles.insidelink}>
+                                    <img
+                                        src="/assets/navbar/home.svg"
+                                        alt=""
+                                        className={styles.img}
+                                    />
+                                    <span className={styles.txt}>Home</span>
+                                </span>
+                            </Link>
 
-                        <Link to="/dashboard" className={styles.links}>
-                            <span className={styles.insidelink}>
-                                <img
-                                    src="/assets/navbar/message.svg"
-                                    alt=""
-                                    className={styles.img}
-                                />
-                                <span className={styles.txt}>Messages</span>
-                                <div className={styles.notification}>9+</div>
-                            </span>
-                        </Link>
+                            <Link to="/dashboard" className={styles.links}>
+                                <span className={styles.insidelink}>
+                                    <img
+                                        src="/assets/navbar/message.svg"
+                                        alt=""
+                                        className={styles.img}
+                                    />
+                                    <span className={styles.txt}>Messages</span>
+                                    <div className={styles.notification}>
+                                        9+
+                                    </div>
+                                </span>
+                            </Link>
 
-                        <Link to="/friends" className={styles.links}>
-                            <span className={styles.insidelink}>
-                                <img
-                                    src="/assets/navbar/user-list.svg"
-                                    alt=""
-                                    className={styles.img}
-                                />
-                                <span className={styles.txt}>Friends</span>
-                                <div className={styles.notification}>9+</div>
-                            </span>
-                        </Link>
+                            <Link to="/friends" className={styles.links}>
+                                <span className={styles.insidelink}>
+                                    <img
+                                        src="/assets/navbar/user-list.svg"
+                                        alt=""
+                                        className={styles.img}
+                                    />
+                                    <span className={styles.txt}>Friends</span>
+                                    <div className={styles.notification}>
+                                        9+
+                                    </div>
+                                </span>
+                            </Link>
 
-                        <Link to="/search" className={styles.links}>
-                            <span className={styles.insidelink}>
-                                <img
-                                    src="/assets/navbar/search.svg"
-                                    alt=""
-                                    className={styles.img}
-                                />
-                                <span className={styles.txt}>Search</span>
-                                <div className={styles.notification}>9+</div>
-                            </span>
-                        </Link>
+                            <Link to="/search" className={styles.links}>
+                                <span className={styles.insidelink}>
+                                    <img
+                                        src="/assets/navbar/search.svg"
+                                        alt=""
+                                        className={styles.img}
+                                    />
+                                    <span className={styles.txt}>Search</span>
+                                    <div className={styles.notification}>
+                                        9+
+                                    </div>
+                                </span>
+                            </Link>
 
-                        <Link to="/notification" className={styles.links}>
-                            <span className={styles.insidelink}>
-                                <img
-                                    src="/assets/navbar/bell.svg"
-                                    alt=""
-                                    className={styles.img}
-                                />
-                                <span className={styles.txt}>Notification</span>
-                                <div className={styles.notification}>9+</div>
-                            </span>
-                        </Link>
-                    </div>
+                            <Link to="/notification" className={styles.links}>
+                                <span className={styles.insidelink}>
+                                    <img
+                                        src="/assets/navbar/bell.svg"
+                                        alt=""
+                                        className={styles.img}
+                                    />
+                                    <span className={styles.txt}>
+                                        Notification
+                                    </span>
+                                    <div className={styles.notification}>
+                                        9+
+                                    </div>
+                                </span>
+                            </Link>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                 </div>
 
                 <div className={styles.headerRight}>
@@ -134,7 +148,7 @@ export default function Navbar() {
                             <Link to="/profile" className={styles.profile_link}>
                                 <span className={styles.insidelink}>
                                     <img
-                                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                        src={user.avatar}
                                         alt=""
                                         className={styles.img}
                                         width="40rem"

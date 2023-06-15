@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
-const defaultProfilePath = path.join('avatar', 'Bot-1.svg');
+const defaultProfilePath = path.join('avatar', 'Bot-0.svg');
 
 const userSchema = mongoose.Schema(
     {
