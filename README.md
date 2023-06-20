@@ -4,6 +4,13 @@
 
 Competitive Developer is a cutting-edge social media platform created exclusively for developers. It serves as a vibrant hub where developers from around the world can connect, collaborate, and engage in discussions related to software development, programming languages, coding challenges, and much more.
 
+## Feel the UI ( Actually Need Some Designing Contributions )
+
+![Screenshot-1](https://raw.githubusercontent.com/itsarraj/competitivedeveloper/master/assets-for-github/ss1.png)
+![Screenshot-1](https://raw.githubusercontent.com/itsarraj/competitivedeveloper/master/assets-for-github/ss2.png)
+![Screenshot-1](https://raw.githubusercontent.com/itsarraj/competitivedeveloper/master/assets-for-github/ss3.png)
+![Screenshot-1](https://raw.githubusercontent.com/itsarraj/competitivedeveloper/master/assets-for-github/ss4.png)
+
 ## Features
 
 - **Connect with fellow developers:** Build a strong network of like-minded developers and connect with professionals across various domains.
