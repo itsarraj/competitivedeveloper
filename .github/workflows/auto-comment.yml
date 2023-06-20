@@ -19,40 +19,39 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           issuesOpened: |
-            Hey @{{ author }},
+            Hey @{{ author }} 🚀,
 
-            Thank you for raising an issue. We will investigate into the matter and get back to you as soon as possible.
+            Thank you for raising an issue. We're on it! We'll investigate and get back to you as soon as possible.
 
-            Please make sure you have given us as much context as possible.
+            Please provide us with as much context as you can. 📝
 
       - name: Auto Comment on Issues Closed
         uses: wow-actions/auto-comment@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           issuesClosed: |
-            Hey @{{ author }}, This issue is closed.
-
+            Hey @{{ author }}! 🎉 This issue is closed.
       - name: Auto Comment on Pull Request Merged
         uses: wow-actions/auto-comment@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pullRequestMerged: |
-            Hey, @{{ author }} Thank you for the valuable contribution!
+            Hey @{{ author }}! 🙌 Thank you for the valuable contribution!
 
       - name: Auto Comment on Pull Request Opened
         uses: wow-actions/auto-comment@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pullRequestOpened: |
-            Hey @{{ author }},
-            <br>
-            Thank you for raising your pull request and contributing to our Community 🎉
+            Hey @{{ author }}! 👋
 
-            Please make sure you have followed our contributing guidelines. We will review it as soon as possible.
+            Thank you for raising your pull request and contributing to our Community! 🎉
+
+            Please make sure you have followed our contributing guidelines. We'll review it soon. 🕒
 
       - name: Auto Comment on Issues Assigned
         uses: wow-actions/auto-comment@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           issuesAssigned: |
-            Hey @{{ author }}, thank you for raising an issue. I have assigned the issue to you. You can now start working on it. If you encounter any problems, feel free to connect with us.
+            Hey @{{ author }}! 👋 Thank you for raising an issue. I have assigned the issue to you. You can now start working on it. If you encounter any problems, feel free to connect with us. 🤝
