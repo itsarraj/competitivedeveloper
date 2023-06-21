@@ -2,7 +2,11 @@
 name: "\U0001F680 Feature Request"
 about: "\U0001F4A1 Suggest an Idea for this Project"
 title: "[FEATURE]"
-labels: Accessibility, Backend, Bug, Community Contribution, Feature Request
+labels: Accessibility, Backend, Bug, Community Contribution, Critical, Data Management,
+  Deployment, Documentation Update, Duplicate, Enhancement, Feature Compatibility,
+  Feature Request, Frontend, Good First Issue, Help Wanted, High Priority, In Progress,
+  Infrastructure, Invalid, Low Priority, Needs Review, On Hold, Performance, Question,
+  Ready for Merge, Security, Testing, UI/UX, Won't Fix
 assignees: ''
 
 ---

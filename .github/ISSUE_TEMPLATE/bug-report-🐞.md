@@ -6,8 +6,7 @@ title: "[BUG]"
 labels: Accessibility, Backend, Bug, Community Contribution, Critical, Data Management,
   Deployment, Documentation Update, Duplicate, Enhancement, Feature Compatibility,
   Feature Request, Frontend, Good First Issue, Help Wanted, High Priority, In Progress,
-  Infrastructure, Invalid, Low Priority, Needs Review, On Hold, Performance, Question,
-  Ready for Merge, Security, Testing, UI/UX, Won't Fix
+  Infrastructure, Invalid, Low Priority
 assignees: ''
 
 ---
