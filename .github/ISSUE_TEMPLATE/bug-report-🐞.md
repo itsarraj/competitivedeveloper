@@ -2,7 +2,7 @@
 name: "Bug Report \U0001F41E"
 about: "\U0001F4CBThis template is used for reporting bugs or errors in the project.
   Please provide detailed information to help us identify and address the issue effectively."
-title: "[BUG]"
+title: "[BUG] : "
 labels: Accessibility, Backend, Bug, Community Contribution, Critical, Data Management,
   Deployment, Documentation Update, Duplicate, Enhancement, Feature Compatibility,
   Feature Request, Frontend, Good First Issue, Help Wanted, High Priority, In Progress,
