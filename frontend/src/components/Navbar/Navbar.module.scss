@@ -23,14 +23,14 @@
     top: 0;
     width: 100%;
     height: 56px;
-    background-color: #27272a;
+    background-color: aliceblue;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
     a {
         text-decoration: none;
-        color: aliceblue;
+        color: black;
     }
     .headerLeft {
         margin: 0 0 0 10px;
@@ -49,24 +49,24 @@
         }
         &:hover {
             .competitive {
-                color: #ff0099;
-                background-color: #25ed6e;
+                color: #d64161;
+                background-color: #d5e1df;
                 border-radius: 10px 0px 0px 10px;
             }
             .developer {
-                color: #25ed6e;
-                background-color: #ff0099;
+                color: #d5e1df;
+                background-color: #d64161;
                 border-radius: 0px 10px 10px 0px;
             }
         }
         .competitive {
-            color: #25ed6e;
-            background-color: #ff0099;
+            color: #d5e1df;
+            background-color: #d64161;
             border-radius: 10px 0px 0px 10px;
         }
         .developer {
-            color: #ff0099;
-            background-color: #25ed6e;
+            color: #d64161;
+            background-color: #d5e1df;
             border-radius: 0px 10px 10px 0px;
         }
     }
@@ -118,7 +118,6 @@
                     }
                     .txt {
                         font-family: 'Manrope';
-
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
@@ -176,13 +175,13 @@
             padding: 5px 10px;
             border: none;
             border-radius: 5px;
-            background-color: #121212;
+            background-color: whitesmoke;
             font-weight: 900;
             color: #ffffff;
             font-size: 1rem;
             cursor: pointer;
             &:hover {
-                background-color: #3e3e42;
+                background-color:white;
             }
             .txt {
                 font-family: 'Manrope';
